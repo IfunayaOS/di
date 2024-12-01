@@ -148,7 +148,7 @@ abstract class Definition
 	abstract public function complete(Nette\DI\Resolver $resolver): void;
 
 
-	//abstract public function generateCode(Nette\DI\PhpGenerator $generator): string;
+	abstract public function generateCode(Nette\DI\PhpGenerator $generator): string;
 
 
 	final public function setNotifier(?\Closure $notifier): void
@@ -158,13 +158,6 @@ abstract class Definition
 
 
 	/********************* deprecated stuff from former ServiceDefinition ****************d*g**/
-
-
-	/** @deprecated */
-	public function generateMethod(Nette\PhpGenerator\Method $method, Nette\DI\PhpGenerator $generator): void
-	{
-		$method->setBody($this->generateCode($generator));
-	}
 
 
 	/** @deprecated Use setType() */
