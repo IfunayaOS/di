@@ -151,7 +151,7 @@ class DefinitionSchema implements Schema
 	private static function getSchema(string $type): Schema
 	{
 		static $cache;
-		$cache = $cache ?: [
+		$cache ??= [
 			Definitions\ServiceDefinition::class => self::getServiceSchema(),
 			Definitions\AccessorDefinition::class => self::getAccessorSchema(),
 			Definitions\FactoryDefinition::class => self::getFactorySchema(),
