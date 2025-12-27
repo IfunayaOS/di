@@ -72,8 +72,8 @@ class DependencyChecker
 		$classes = array_keys($classes);
 		$functions = array_unique($functions, SORT_REGULAR);
 		$hash = self::calculateHash($classes, $functions);
-		$files = @array_map('filemtime', array_combine($files, $files)); // @ - file may not exist
-		$phpFiles = @array_map('filemtime', array_combine($phpFiles, $phpFiles)); // @ - file may not exist
+		$files = @array_map(filemtime(...), array_combine($files, $files)); // @ - file may not exist
+		$phpFiles = @array_map(filemtime(...), array_combine($phpFiles, $phpFiles)); // @ - file may not exist
 		return [self::Version, $files, $phpFiles, $classes, $functions, $hash];
 	}
 
@@ -91,9 +91,9 @@ class DependencyChecker
 	): bool
 	{
 		try {
-			$currentFiles = @array_map('filemtime', array_combine($tmp = array_keys($files), $tmp)); // @ - files may not exist
+			$currentFiles = @array_map(filemtime(...), array_combine($tmp = array_keys($files), $tmp)); // @ - files may not exist
 			$origPhpFiles = $phpFiles;
-			$phpFiles = @array_map('filemtime', array_combine($tmp = array_keys($phpFiles), $tmp)); // @ - files may not exist
+			$phpFiles = @array_map(filemtime(...), array_combine($tmp = array_keys($phpFiles), $tmp)); // @ - files may not exist
 			return $version !== self::Version
 				|| $files !== $currentFiles
 				|| ($phpFiles !== $origPhpFiles && $hash !== self::calculateHash($classes, $functions));

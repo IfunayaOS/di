@@ -22,12 +22,10 @@ final class Statement implements Nette\Schema\DynamicParameter
 {
 	use Nette\SmartObject;
 
-	public array $arguments;
-	private string|array|Definition|Reference|null $entity;
-
-
-	public function __construct(string|array|Definition|Reference|null $entity, array $arguments = [])
-	{
+	public function __construct(
+		private string|array|Definition|Reference|null $entity,
+		public array $arguments = [],
+	) {
 		if (
 			$entity !== null
 			&& !is_string($entity) // Class, @service, not, tags, types, PHP literal, entity::member
@@ -55,7 +53,6 @@ final class Statement implements Nette\Schema\DynamicParameter
 		}
 
 		$this->entity = $entity;
-		$this->arguments = $arguments;
 	}
 
 

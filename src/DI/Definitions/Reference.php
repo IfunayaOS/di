@@ -20,8 +20,6 @@ final class Reference
 	/** @deprecated use Reference::Self */
 	public const SELF = self::Self;
 
-	private string $value;
-
 
 	public static function fromType(string $value): static
 	{
@@ -33,9 +31,9 @@ final class Reference
 	}
 
 
-	public function __construct(string $value)
-	{
-		$this->value = $value;
+	public function __construct(
+		private readonly string $value,
+	) {
 	}
 
 

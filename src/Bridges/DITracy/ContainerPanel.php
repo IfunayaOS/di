@@ -29,7 +29,7 @@ class ContainerPanel implements Tracy\IBarPanel
 	{
 		$this->container = $container;
 		$this->elapsedTime = self::$compilationTime
-			? microtime(true) - self::$compilationTime
+			? microtime(as_float: true) - self::$compilationTime
 			: null;
 	}
 

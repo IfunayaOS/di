@@ -59,7 +59,7 @@ final class ServiceDefinition extends Definition
 	 */
 	public function getFactory(): Statement
 	{
-		return $this->getCreator();
+		return $this->creator;
 	}
 
 
@@ -169,7 +169,7 @@ final class ServiceDefinition extends Definition
 		$this->creator = $resolver->completeStatement($this->creator);
 
 		foreach ($this->setup as &$setup) {
-			$setup = $resolver->completeStatement($setup, true);
+			$setup = $resolver->completeStatement($setup, currentServiceAllowed: true);
 		}
 	}
 

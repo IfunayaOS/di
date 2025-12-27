@@ -119,10 +119,10 @@ final class Helpers
 					}
 					$val = $fullExpand
 						? self::expand($val, $params, $recursive + [$pathStr => 1])
-						: self::expandString($val, $params, $recursive + [$pathStr => 1], true);
+						: self::expandString($val, $params, $recursive + [$pathStr => 1], onlyString: true);
 				}
 			} elseif ($val instanceof DynamicParameter) {
-				$val = new DynamicParameter($val . '[' . var_export($key, true) . ']');
+				$val = new DynamicParameter($val . '[' . var_export($key, return: true) . ']');
 			} elseif ($val instanceof Statement) {
 				$val = new Statement('(?)[?]', [$val, $key]);
 			} else {
