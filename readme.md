@@ -8,7 +8,7 @@
 
  <!---->
 
-Introduction
+Introduction.
 ------------
 
 Purpose of the Dependecy Injection (DI) is to free classes from the responsibility for obtaining objects that they need for its operation (these objects are called **services**). To pass them these services on their instantiation instead.
